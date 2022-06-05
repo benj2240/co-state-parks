@@ -23,18 +23,16 @@ function fetchGeoCoords (parkPageUrl) {
  *  @param {string} parkName - the park's name, as pulled from its link text
  *  @param {string} latLongDms - the park's location, example '37°08′44″N 104°34′13″W'
  */
-function buildSqlInsertString (parkName, latLongDms) {
+function parseCoords (latLongDms) {
   // latLongDms will be a string like '37°08′44″N 104°34′13″W'
-  let [n, w] = latLongDms.match(/(\d+)°(\d+)′([\d.]+)″/g)
+  return latLongDms.match(/(\d+)°(\d+)′([\d.]+)″/g)
     .map(dms => {
       let [d, m, s] = /(\d+)°(\d+)′([\d.]+)″/.exec(dms)
       .slice(1)
       .map(c => parseFloat(c));
       return d + m / 60 + s / 3600;
     })
-  	.map(coord => Math.round(coord * 1000, 0) / 1000);
-  
-  return `('${parkName}', ${n}, ${w})`;
+    .map(coord => Math.round(coord * 1000, 0) / 1000);
 }
 
 /** @function printAllCoordinates - Follow each link in Wikipedia's list of
@@ -45,12 +43,14 @@ async function printAllCoordinates () {
   const parks = Array.from(document.querySelector('.wikitable').querySelectorAll('tr'))
     .slice(2) // skip the table header, which is a 2-part row
     .map(row => row.querySelector('a'))
-		.map(a => fetchGeoCoords(a.href)
-    	.then(coords => buildSqlInsertString(a.innerText, coords)));
+    .map(a => fetchGeoCoords(a.href)
+      .then(coords => {
+        let [lat, long] = parseCoords(coords);
+        return `('${a.innerText}', ${lat}, ${long}, '${a.href}')`;
+      }));
     
-  const sqlRows = await Promise.all(parks).join('\n\t\t,');
-	const sqlInsert = 'INSERT INTO ParkCoordinates (ParkName, Latitude, Longitude)\n\tVALUES\n\t\t' + sqlRows
-  console.log(sqlInsert);
+  const sqlRows = await Promise.all(parks);
+  console.log(sqlRows.join('\n\t\t,'));
 }
 
 printAllCoordinates();

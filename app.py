@@ -22,5 +22,8 @@ def all_parks():
 	cursor = connection.cursor()
 	rows = cursor.execute('SELECT * FROM Parks').fetchall()
 	connection.close()
+
+	# Map the rows to a list of dictionaries
+	# https://stackoverflow.com/a/35618371/2108357
 	parks = [dict(zip(row.keys(), row)) for row in rows]
 	return jsonify(parks)

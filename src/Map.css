@@ -1,3 +1,9 @@
+/*
+ * The variables map-width, map-height, and marker-diameter are set in Map.js.
+ * This let me put all the scales in one place, where it was easier to tinker.
+ * React likely has a more idiomatic approach for this, but I haven't found it.
+ */
+
 #map {
 	position: relative;
 	width: var(--map-width);
@@ -10,7 +16,27 @@
 	position: absolute;
 	width: var(--marker-diameter);
 	height: var(--marker-diameter);
-	border: thin solid red;
-	border-radius: calc(0.5*var(--marker-diameter));
-	background-color: pink;
+	border: thin solid green;
+	border-radius: 50%;
+	background-color: lightgreen;
+}
+
+/* Make the marker animate and look clickable on mouseover */
+.marker:hover {
+	cursor: pointer;
+	animation: pop 1s;
+	transform: scale(1.8);
+}
+
+/* Embiggen just a little too much too fast, then relax */
+@keyframes pop {
+	from { transform: scale(1.0); }
+	20% { transform: scale(2.0); }
+	to { transform: scale(1.8); }
+}
+
+/* Put the park info card below the map, with room to breathe  */
+#selected-park {
+	padding-top: calc(1em + var(--map-height));
+	margin-left: 1em;
 }
