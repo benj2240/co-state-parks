@@ -1,0 +1,16 @@
+#map {
+	position: relative;
+	width: var(--map-width);
+	height: var(--map-height);
+	background-image: url("USA_Colorado_relief_location_map.svg");
+	background-size: cover;
+}
+
+.marker {
+	position: absolute;
+	width: var(--marker-diameter);
+	height: var(--marker-diameter);
+	border: thin solid red;
+	border-radius: calc(0.5*var(--marker-diameter));
+	background-color: pink;
+}

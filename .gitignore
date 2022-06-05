@@ -5,8 +5,9 @@
 /.pnp
 .pnp.js
 
-# testing
-/coverage
+# python stuff
+venv
+__pycache__
 
 # production
 /build
