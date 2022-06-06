@@ -5,7 +5,7 @@
  *  @param {string} parkPageUrl - for example, 'https://en.wikipedia.org/wiki/Trinidad_Lake_State_Park'
  */
 function fetchGeoCoords (parkPageUrl) {
-  // parkPageUrl will point to a specific park's wikipediate page
+  // parkPageUrl will point to a specific park's wikipedia page
   return new Promise(function (resolve, reject) {
     let request = new XMLHttpRequest();
     request.addEventListener('load', function (request) {
@@ -19,9 +19,9 @@ function fetchGeoCoords (parkPageUrl) {
   });
 }
 
-/** @function buildSqlInsertString - Create a string like ('MyPark', 37.146, 104.57)
- *  @param {string} parkName - the park's name, as pulled from its link text
+/** @function parseCoords - Parse the degrees/minutes/seconds notation into float coordinates
  *  @param {string} latLongDms - the park's location, example '37°08′44″N 104°34′13″W'
+ *  @returns {Array} - the park's location, example [37.146, 104.57]
  */
 function parseCoords (latLongDms) {
   // latLongDms will be a string like '37°08′44″N 104°34′13″W'
@@ -37,7 +37,7 @@ function parseCoords (latLongDms) {
 
 /** @function printAllCoordinates - Follow each link in Wikipedia's list of
  *    Colorado state parks, extracting the park name and coordinates. Then
- *    print all that data to the console, formatted as a SQL INSERT statement
+ *    print all that data to the console, formatted to fit into a SQL INSERT statement
  */
 async function printAllCoordinates () {
   const parks = Array.from(document.querySelector('.wikitable').querySelectorAll('tr'))
