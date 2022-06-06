@@ -27,12 +27,15 @@ Currently this app is not hosted anywhere, so the only way you can view the
 web page (apart from this lovely screenshot) is by running the project yourself.
 
 1. Clone this repository
-2. Install the Node packages: `> yarn install`
-3. (optional) Activate a virtual Python environment
-4. Execute the one-time setup script: `> python src/setup/databaseSetup.py`
-5. Build the web app: `> yarn build`
-6. Start the server: `Flask run`
-7. Browse to the page at `http://localhost:5000`
+2. If necessary, install (or update) Node JS
+3. Install the Node packages: `> yarn install`
+4. If necessary, install (or update) Python
+5. (optional) Activate a virtual Python environment
+6. Execute the one-time setup script: `> python src/setup/databaseSetup.py`
+7. Build the web app: `> yarn build`
+8. If necessary, install Flask: `> pip install Flask`
+9. Start the server: `Flask run`
+10. Browse to the page at `http://localhost:5000`
 
 ## Where did you get the data?
 
