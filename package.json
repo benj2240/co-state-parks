@@ -2,15 +2,13 @@
   "name": "co-state-parks",
   "version": "0.1.0",
   "private": true,
+  "license": "CC-BY-SA-4.0",
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start-spa": "react-scripts start",
-    "start-api": "venv/bin/Flask run --reload",
-    "start": "yarn start-spa & yarn start-api",
     "build": "react-scripts build"
   },
   "eslintConfig": {

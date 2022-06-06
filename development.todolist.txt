@@ -6,14 +6,15 @@ Parks:
   ✔ "Ideally your web server is configured to serve [static files] for you" @done (22-06-04 16:25)
   ✔ favicon markup in html @done (22-06-04 16:25)
   ✘ Hot reloads while serving from Flask @cancelled (22-06-05 16:24)
-  ☐ So many copies of this SVG. Minify it, and use directly from React?
-  ☐ Clicking a park gives an info popup? Scraped from wikipedia?
-  ☐ Mousing over a park shows a "swell" animation?
+  ✘ So many copies of this SVG. Minify it, and use directly from React? @cancelled (22-06-05 17:46)
+  ✔ Clicking a park gives an info popup? @done (22-06-05 17:46)
+    ✘ Scraped from wikipedia? @cancelled (22-06-05 17:46)
+  ✔ Mousing over a park shows a "swell" animation? @done (22-06-05 17:46)
   ✘ Serve from AWS @cancelled (22-06-05 14:05)
   ✔ Fetch parks from DB @done (22-06-05 16:18)
-  ☐ UI for marking parks as visited,
+  ✘ UI for marking parks as visited, @cancelled (22-06-05 17:46)
     ✘ and when they were visited @cancelled (22-06-05 16:24)
-  ☐ User-level storage of visited parks
-  ☐ Investigate wikipedia licensing. CC? Attribution required? Where?
+  ✘ User-level storage of visited parks @cancelled (22-06-05 17:46)
+  ✔ Investigate wikipedia licensing. CC? Attribution required? Where? @done (22-06-05 19:10)
   ✘ Run Flask in production mode, whatever that means for me @cancelled (22-06-05 16:23)
-  ☐ Swagger UI for the API
+  ✘ Swagger UI for the API @cancelled (22-06-05 17:46)
